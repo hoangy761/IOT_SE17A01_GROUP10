@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>IOT</title>
+     <link rel="stylesheet" href="style.css">
+     <link rel="preconnect" href="https://fonts.gstatic.com">
+     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <script src="https://kit.fontawesome.com/a46b7b6629.js" crossorigin="anonymous"></script>
+
+     <style>
+          body,html{
+               height:100%;
+               width: 100%;
+               margin:0;
+               background-image: url(image/PIC3.jpg);
+               background-position: center;
+               background-size: 100% 100%;
+               background-repeat: no-repeat;  
+          }
+          
+     </style>
+</head>
+<body>  
+     <div class="titleContainer">
+          <div class="logo">
+               <img scr="image/logo.png" alt="">
+          </div>
+          <div class="title">
+          smart city
+          </div>    
+     </div>  
+     <div class="tabContainer">
+          <div class="buttonContainer">
+               <button onclick="showPanel(0)"><i class="far fa-building"></i>district I</button>            
+          </div>
+          <div class="tabPanelContainer">
+               <div class="tabPanel">
+                    <div class="tabsub">
+                         <div class="tabTemp">
+                              <script src="https://cdn.lordicon.com//libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+                              <lord-icon
+                              src="https://cdn.lordicon.com//mypzgycw.json"
+                              trigger="loop"
+                              colors="primary:#000000,secondary:#c71f16"
+                              stroke="83"
+                              style="width:100px;height:100px">
+                              </lord-icon>                        
+                             <h1><i class="fas fa-temperature-high"></i>TEMPERATURE:</h1>
+                             <h1 id="temp"></h1> 
+                         </div>
+                         <div class="tabWet">
+                              <script src="https://cdn.lordicon.com//libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+                              <lord-icon
+                                     src="https://cdn.lordicon.com//oyclgnwc.json"
+                                    trigger="loop"
+                                    colors="primary:#2516c7,secondary:#4030e8"
+                                    style="width:100px;height:100px">
+                               </lord-icon>
+                               <h1><i class="fas fa-tint"></i>HUMIDITY:</h1>
+                               <h1 id="wet"></h1>
+                         </div>
+                        
+                         </div>   
+                    </div>
+               </div>
+                               
+                         </div>   
+                    </div>
+               </div>
+          </div>
+     </div>
+     <div class="equipmentContainer">
+          <div class="equipmentTitle"><h1><i class="fas fa-wifi"></i>EQUIPMENT CONTROL</h1></div>
+          <div class="equipmentTabContainer">
+                    <div class="light">
+                        <img src="image/light_off.png" class="light_on" id="light" alt="">
+                        <div class="boxbutton1">
+                        <button type="button" id="btn1">On</button> 
+                        <button type="button" id="btn2">Off</button><br><br>
+                        </div>
+                    </div>
+                    <div class="fan">
+                         <img src="image/fan_off.png" class="fan_on" id="fan" alt="">
+                         <div class="boxbutton2">
+                         <button type="button" id="btn3">On</button> 
+                         <button type="button" id="btn4">Off</button><br><br>
+                         </div>
+                    </div>
+                    <div class="TV">
+                         <img src="image/TV_off.png" class="TV_on" id="TV" alt="">
+                         <div class="boxbutton3">
+                         <button type="button" id="btn5">On</button> 
+                         <button type="button" id="btn6">Off</button><br><br>
+                         </div>
+               </div>
+
+          </div>
+     </div>
+     <div class="footer">
+          <label for="text">Group 10 SE17A01</label><br>
+          <label for="text">Đề tài???</label><br>
+     </div>
+
+
+
+
+
+
+<!---------------------------------------------------------------------------------------------------------------->
+<script src="IOT.js"></script>
+
+   <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+  apiKey: "AIzaSyCo5RBuE69fSHMNULMYNhG0mvUzNxBvbBk",
+  authDomain: "group10-iot-se17a01.firebaseapp.com",
+  databaseURL: "https://group10-iot-se17a01-default-rtdb.firebaseio.com",
+  projectId: "group10-iot-se17a01",
+  storageBucket: "group10-iot-se17a01.appspot.com",
+  messagingSenderId: "282759206779",
+  appId: "1:282759206779:web:3539959a3567289d3c0fde",
+  measurementId: "G-HC0HN020GS"
+};
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+    // Import the functions you need from the SDKs you need
+ //   import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+//const 
+
+
+
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+
+
+      
+      //functions
+      // make sure that the name in ' ' match with name of your database child
+      var temp = document.getElementById('temp');
+      var dbRef = firebase.database().ref().child('Nhiet do');
+      dbRef.on('value', snap => temp.innerText = snap.val());
+    
+    
+      var wet = document.getElementById('wet');
+      var dbRef2 = firebase.database().ref().child('Do am');   
+      dbRef2.on('value', snap => wet.innerText = snap.val());
+     
+
+
+     
+
+
+      var temp1 = document.getElementById('temp1');
+      var dbRef4 = firebase.database().ref().child('Nhiet do1');
+      dbRef4.on('value', snap => temp1.innerText = snap.val());
+    
+    
+      var wet1 = document.getElementById('wet1');
+      var dbRef5 = firebase.database().ref().child('Do am1');   
+      dbRef5.on('value', snap => wet1.innerText = snap.val());
+     
+
+
+
+
+
+      var temp2 = document.getElementById('temp2');
+      var dbRef7 = firebase.database().ref().child('Nhiet do2');
+      dbRef7.on('value', snap => temp2.innerText = snap.val());
+    
+    
+      var wet2 = document.getElementById('wet2');
+      var dbRef8 = firebase.database().ref().child('Do am2');   
+      dbRef8.on('value', snap => wet2.innerText = snap.val());
+     
+
+ 
+    </script>
+
+
+</body>
+</html>
